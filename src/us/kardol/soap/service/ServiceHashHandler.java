@@ -2,7 +2,6 @@ package us.kardol.soap.service;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;

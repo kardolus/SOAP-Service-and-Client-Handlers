@@ -1,6 +1,7 @@
 package us.kardol.data;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * @author Guillermo Kardolus
@@ -25,6 +26,21 @@ public class Invention implements Serializable, Comparable<Invention> {
     public String toString(){
         return this.getYear().toString() + " " + this.getInventor() + " " 
                 + this.getInvention();
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        return o instanceof Invention 
+                && ((Invention)o).getYear().equals(this.getYear())
+                && ((Invention)o).getInventor().equals(this.getInventor())
+                && ((Invention)o).getInvention().equals(this.getInvention());
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + Objects.hashCode(this.year);
+        return hash;
     }
     
     public void setId(Integer id){

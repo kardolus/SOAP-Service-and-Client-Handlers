@@ -48,6 +48,18 @@ public interface SOAPResource {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<us.kardol.soap.client.wsimport.Invention>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getAll", targetNamespace = "http://service.soap.kardol.us/", className = "us.kardol.soap.client.wsimport.GetAll")
+    @ResponseWrapper(localName = "getAllResponse", targetNamespace = "http://service.soap.kardol.us/", className = "us.kardol.soap.client.wsimport.GetAllResponse")
+    @Action(input = "http://service.soap.kardol.us/SOAPResource/getAllRequest", output = "http://service.soap.kardol.us/SOAPResource/getAllResponse")
+    public List<Invention> getAll();
+
+    /**
+     * 
      * @param arg0
      * @return
      *     returns us.kardol.soap.client.wsimport.Invention
@@ -60,17 +72,5 @@ public interface SOAPResource {
     public Invention getOne(
         @WebParam(name = "arg0", targetNamespace = "")
         Integer arg0);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<us.kardol.soap.client.wsimport.Invention>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getAll", targetNamespace = "http://service.soap.kardol.us/", className = "us.kardol.soap.client.wsimport.GetAll")
-    @ResponseWrapper(localName = "getAllResponse", targetNamespace = "http://service.soap.kardol.us/", className = "us.kardol.soap.client.wsimport.GetAllResponse")
-    @Action(input = "http://service.soap.kardol.us/SOAPResource/getAllRequest", output = "http://service.soap.kardol.us/SOAPResource/getAllResponse")
-    public List<Invention> getAll();
 
 }
