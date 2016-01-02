@@ -12,6 +12,7 @@ import us.kardol.soap.client.wsimport.SOAPResource;
 import us.kardol.soap.client.wsimport.SOAPResourceService;
 import us.kardol.utility.Settings;
 import static us.kardol.data.Inventions.DATA;
+import us.kardol.soap.client.wsimport.HoverboardException_Exception;
 import us.kardol.utility.FileParser;
 
 /**
@@ -57,4 +58,21 @@ public class ClientTest {
         }
     }
     
+    @Test
+    public void getOneTest() {
+        System.out.println("Testing " + service.getClass().getName() + ".getOne(id)");
+        Invention invention = port.getOne(port.getAll().size() - 1);
+        assert(invention != null);
+    }
+ 
+    @Test
+    public void createTest() throws HoverboardException_Exception {
+        System.out.println("Testing " + service.getClass().getName() + ".create(inv)");
+        Invention i = new Invention();
+        i.setYear(2016);
+        i.setInvention("The thing");
+        i.setInventor("The dude");
+        Integer theId = port.create(i);
+        assertEquals(port.getOne(theId).getYear(), i.getYear());
+    }
 }
