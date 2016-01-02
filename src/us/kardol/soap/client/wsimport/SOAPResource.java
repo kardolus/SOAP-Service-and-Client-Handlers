@@ -30,7 +30,7 @@ public interface SOAPResource {
      * 
      * @param arg0
      * @return
-     *     returns java.lang.String
+     *     returns java.lang.Integer
      * @throws HoverboardException_Exception
      */
     @WebMethod
@@ -40,7 +40,7 @@ public interface SOAPResource {
     @Action(input = "http://service.soap.kardol.us/SOAPResource/createRequest", output = "http://service.soap.kardol.us/SOAPResource/createResponse", fault = {
         @FaultAction(className = HoverboardException_Exception.class, value = "http://service.soap.kardol.us/SOAPResource/create/Fault/HoverboardException")
     })
-    public String create(
+    public Integer create(
         @WebParam(name = "arg0", targetNamespace = "")
         Invention arg0)
         throws HoverboardException_Exception

@@ -34,7 +34,7 @@ public class SOAPResource {
     }
     
     @WebMethod
-    public String create(Invention i) throws HoverboardException{
-        return "Created Invention Record: " + inv.addInvention(i);
+    public Integer create(Invention i) throws HoverboardException{
+        return inv.addInvention(i);
     }
 }
