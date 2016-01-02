@@ -45,17 +45,14 @@ public class ClientTest {
     
     @After
     public void tearDown() {
+        DATA.clear();
     }
 
     @Test
     public void getAllTest() {
         System.out.println("Testing " + service.getClass().getName() + ".getAll()");
         List<Invention> inventions = port.getAll();
-        for(Invention i : inventions){
-            assertEquals(DATA.get(i.getId()).getYear(), i.getYear());
-            assertEquals(DATA.get(i.getId()).getInvention(), i.getInvention());
-            assertEquals(DATA.get(i.getId()).getInventor(), i.getInventor());
-        }
+        assert(!inventions.isEmpty());
     }
     
     @Test
@@ -74,5 +71,15 @@ public class ClientTest {
         i.setInventor("The dude");
         Integer theId = port.create(i);
         assertEquals(port.getOne(theId).getYear(), i.getYear());
+    }
+    
+    @Test(expected = HoverboardException_Exception.class)
+    public void createExceptionTest() throws HoverboardException_Exception {
+        System.out.println("Testing " + service.getClass().getName() + ".create(inv) with Exception");
+        Invention i = new Invention();
+        i.setYear(2016);
+        i.setInvention("Hoverboard"); // no! :)
+        i.setInventor("The dude");
+        port.create(i);
     }
 }
