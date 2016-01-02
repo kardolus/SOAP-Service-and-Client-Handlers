@@ -1,0 +1,8 @@
+<handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
+  <handler-chain>                                                      
+    <handler>
+      <handler-name>us.kardol.soap.service.ServiceHashHandler</handler-name>      
+      <handler-class>us.kardol.soap.service.ServiceHashHandler</handler-class>
+    </handler>
+  </handler-chain>
+</handler-chains>
