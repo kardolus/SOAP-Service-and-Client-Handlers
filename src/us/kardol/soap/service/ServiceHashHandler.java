@@ -19,7 +19,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import us.kardol.utility.Settings;
 import us.kardol.utility.Signature;
-import us.kardol.utility.TimeStamp;
 
 /**
  * @author Guillermo Kardolus
