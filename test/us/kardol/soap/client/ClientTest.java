@@ -1,6 +1,7 @@
 package us.kardol.soap.client;
 
 import java.util.List;
+import javax.xml.ws.WebServiceException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -60,6 +61,12 @@ public class ClientTest {
         System.out.println("Testing " + service.getClass().getName() + ".getOne(id)");
         Invention invention = port.getOne(port.getAll().size() - 1);
         assert(invention != null);
+    }
+    
+    @Test(expected = WebServiceException.class)
+    public void getOneExceptionTest() {
+        System.out.println("Testing " + service.getClass().getName() + ".getOne(id) with Exception");
+        port.getOne(0); // no!
     }
  
     @Test
