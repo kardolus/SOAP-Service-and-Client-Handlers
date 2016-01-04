@@ -26,7 +26,8 @@ public class ClientArgumentHandler implements LogicalHandler<LogicalMessageConte
             LogicalMessage msg = context.getMessage();
             JAXBContext jaxbCtx;      
             try {
-                jaxbCtx = JAXBContext.newInstance("us.kardol.soap.client.wsimport");
+                // package that includes the wsimport ObjectFactory
+                jaxbCtx = JAXBContext.newInstance("us.kardol.soap.client.wsimport"); 
                 Object payload = msg.getPayload(jaxbCtx);                         
                 // Check payload to be sure it's what we want.
                 if(payload instanceof JAXBElement) {
